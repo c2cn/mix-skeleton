@@ -3,7 +3,6 @@
 namespace App\Console\Workers;
 
 use Mix\WorkerPool\AbstractWorker;
-use Swoole\Coroutine\Channel;
 
 /**
  * Class FooWorker
@@ -14,11 +13,9 @@ class FooWorker extends AbstractWorker
 
     /**
      * FooWorker constructor.
-     * @param Channel $workerPool
      */
-    public function __construct(Channel $workerPool)
+    public function __construct()
     {
-        parent::__construct($workerPool);
         // 实例化一些需重用的对象
         // ...
     }
@@ -27,7 +24,7 @@ class FooWorker extends AbstractWorker
      * 处理
      * @param $data
      */
-    public function handle($data)
+    public function do($data)
     {
         var_dump($data);
     }
